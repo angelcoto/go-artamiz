@@ -1,13 +1,15 @@
 # go-artamiz
 Calculador de hash de archivos
 
-## Instalación desde fuente
-Decargar el código fuente
+## Instalación desde código fuente
+Es requerido instalar Go (https://golang.org/doc/install)
 
-cd $GOPATH
-git get github.com/angelcoto/go-artamiz
+Luego de asegurarse que Go está debidamente instalado, se ejecuta:
 
-El binario queda generado en $GOBIN
+    cd $GOPATH
+    git get github.com/angelcoto/go-artamiz
+
+El binario generado en $GOBIN
 
 ## Uso
     go-artamiz -h
