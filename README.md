@@ -6,7 +6,7 @@ Es requerido instalar Go (https://golang.org/doc/install)
 
 Luego de asegurarse que Go está debidamente instalado, se ejecuta:
 
-    cd $GOPATH
+    cd $GOPATH/src
     go get github.com/angelcoto/go-artamiz
 
 El binario generado en $GOBIN
