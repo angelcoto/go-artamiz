@@ -123,7 +123,7 @@ var resultados = make(chan tresultado, totalresultados)
 // workerHash lee el buffer "jobs" para obtener el próximo job a ejecutar
 // Cuando la tarea ha sido ejecutada el resultado se escribe en el buffer "resultado"
 // El worker seguirá ejecutándose mientras el buffer no esté cerrado.
-// Cuando el buffer se cierra cerrado de declara como finalizado el worker a través de
+// Cuando el buffer se cierra el worker se declara como finalizado a través de
 // wg.Done()
 func workerHash(wg *sync.WaitGroup) {
 	//Recorre el buffer de jobs
@@ -136,7 +136,7 @@ func workerHash(wg *sync.WaitGroup) {
 }
 
 // imprimeSalida lee el buffer de resultados para imprimir cada resultado a terminal.
-// la rutina se mantiene en ejecución hasta que el buffer es cerrado.
+// La rutina se mantiene en ejecución hasta que el buffer es cerrado.
 func imprimeSalida(done chan bool) {
 	for resultado := range resultados {
 		if resultado.err != nil {
@@ -163,7 +163,7 @@ func creaWorkerPool(nWorkers int) {
 // incluyendo los subdirectorios.
 //
 // Esta versión implementa el patrón Worker Pools con la utilización de
-// bufferd channels y goroutines.  Con esta implementación se logra una
+// buffered channels y goroutines.  Con esta implementación se logra una
 // ejecución asíncrona de las funciones del procesos, manteniendo la
 // comunicación entre las funciones a través los buffers.
 //
