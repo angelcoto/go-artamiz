@@ -9,7 +9,7 @@ Luego de asegurarse que Go está debidamente instalado, se ejecuta:
     cd $GOPATH/src
     go get github.com/angelcoto/go-artamiz
 
-El binario generado en $GOBIN
+El binario es generado en $GOBIN
 
 ## Uso
     go-artamiz -h

@@ -108,7 +108,6 @@ func SumRecursivo(dir string, algo string) {
 			return err
 		}
 
-		//fmt.Println(path, info.IsDir(), algo)
 		if !info.IsDir() {
 			hash, err := SumArchivo(path, algo)
 			if err != nil {

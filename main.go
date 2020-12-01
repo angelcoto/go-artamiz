@@ -13,22 +13,21 @@ import (
 
 const linea = "----------------------------------------------------------------"
 
-func encabezado() {
+func encabezado(t time.Time) {
 	usuario, err := user.Current()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	t := time.Now()
 	fmt.Println("Tabla hash generada por:", usuario.Username)
 	fmt.Println("Inicio:", t)
 	fmt.Println(linea)
 }
 
-func pie() {
-	t := time.Now()
+func pie(t, inicio time.Time) {
 	fmt.Println(linea)
 	fmt.Println("Fin:", t)
+	fmt.Println("Duración: ", time.Since(inicio))
 }
 
 func main() {
@@ -37,6 +36,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	inicio := time.Now()
 
 	filePtr := flag.String("a", "", "Archivo")
 	txtPtr := flag.String("t", "", "Texto")
@@ -66,8 +67,8 @@ func main() {
 
 	} else {
 
-		encabezado()
-		defer pie()
+		encabezado(time.Now())
+		defer pie(time.Now(), inicio)
 
 		if !recursivo {
 			hash.SumDirectorio(directorio, algo)
