@@ -34,7 +34,7 @@ func main() {
 
 	dir, err := os.Getwd()
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	inicio := time.Now()
@@ -48,37 +48,30 @@ func main() {
 
 	flag.Parse()
 
-	archivo := *filePtr
-	texto := *txtPtr
-	directorio := *dirPtr
-	algo := *algoPtr
-	recursivo := *recPtr
-	verificar := *verPtr
-
-	if verificar != "" {
-		hash.VerificaHash(verificar)
+	if *verPtr != "" {
+		hash.VerificaHash(*verPtr)
 	} else {
-		if archivo != "" {
-			hash, err := hash.SumArchivo(archivo, algo)
+		if *filePtr != "" {
+			hash, err := hash.SumArchivo(*filePtr, *algoPtr)
 
 			if err != nil {
 				fmt.Printf("* Error: %s\n", err)
 			} else {
-				fmt.Printf("%x *%s\n", hash, archivo)
+				fmt.Printf("%x *%s\n", hash, *filePtr)
 			}
 
-		} else if texto != "" {
-			fmt.Printf("%x\n", hash.SumTexto(texto, algo))
+		} else if *txtPtr != "" {
+			fmt.Printf("%x\n", hash.SumTexto(*txtPtr, *algoPtr))
 
 		} else {
 
 			encabezado(time.Now())
 			defer pie(time.Now(), inicio)
 
-			if !recursivo {
-				hash.SumDirectorio(directorio, algo)
+			if !*recPtr {
+				hash.SumDirectorio(*dirPtr, *algoPtr)
 			} else {
-				hash.SumRecursivo(directorio, algo)
+				hash.SumRecursivo(*dirPtr, *algoPtr)
 			}
 
 		}
