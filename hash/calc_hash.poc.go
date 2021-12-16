@@ -106,7 +106,7 @@ type tjob struct {
 	algo string
 }
 
-// Definicion del buffer para resultados
+// Definición del buffer para resultados
 type tresultado struct {
 	job  tjob
 	hash []byte
@@ -114,7 +114,7 @@ type tresultado struct {
 }
 
 const totaljobs = 10
-const totalworkers = 1
+const totalworkers = 2
 const totalresultados = 10
 
 var jobs = make(chan tjob, totaljobs)
@@ -174,7 +174,7 @@ func creaWorkerPool(nWorkers int) {
 // versión mostro ofrecer un desempeño un poco inferior cuando se utiliza un solo worker,
 // y significativamente inferior cuando se utiliza más de un worker.
 // Posiblemente en escenarios de sistemas de almacenamiento con arreglos de discos la versión
-// asíncrona ofrezca un mejor desempeño, pero en escenario de un solo disco el desempeño 
+// asíncrona ofrezca un mejor desempeño, pero en escenario de un solo disco el desempeño
 // fue decepcionante.
 func SumRecursivo(dir string, algo string) {
 
@@ -182,7 +182,7 @@ func SumRecursivo(dir string, algo string) {
 
 	done := make(chan bool)
 
-	// 
+	//
 	go func() {
 
 		i := 0
